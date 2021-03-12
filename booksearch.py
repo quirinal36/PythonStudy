@@ -1,4 +1,4 @@
-import urllib.request
+c.request
 import ssl
 import json
 
