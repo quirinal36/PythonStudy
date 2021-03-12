@@ -1,31 +1,27 @@
-import urllib.request
-import ssl
+from booksearch import search, dsearch
 import json
 
-client_id = 'BNidahojeq2_rJKwP41X'
-client_secret = 'gZ5_wDOEIB'
+"""
+sim: 유사도순
+date: 출간일순
+count: 판매량순
+"""
+sort = ['sim','date', 'count']
+# 검색 시작위치, 최대 1000까지 가능
+start = 1
+# 검색 결과 출력 건수 지정 (기본: 10, 최대: 100)
+display = 30
+# 검색어
+query = 'python'
 
-url = 'https://openapi.naver.com/v1/search/book.json'
+result = dsearch(query, display, start, sort[2])
+books = result.get('items')
+print(len(books))
+for book in books:    
+    print(book.get('title'))
 
+bookinfo = {}
+bookinfo['books'] = books
 
-encText = "?query="+ urllib.parse.quote('python')
-url = url + encText
-print(url)
-
-request = urllib.request.Request(url)
-request.add_header('X-Naver-Client-Id', client_id)
-request.add_header('X-Naver-Client-Secret', client_secret)
-
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
-
-response = urllib.request.urlopen(request, context=ctx)
-print(response.getcode())
-
-content = response.read().decode('UTF-8')
-searchResult = json.loads(content)
-items = searchResult.get('items')
-
-for item in items:
-    print(item.get('title'))
+with open('search_result.json', 'w', encoding='UTF-8') as json_file:
+    json_file.write(json.dumps(bookinfo, ensure_ascii=False, indent=2))

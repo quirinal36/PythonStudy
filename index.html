@@ -1,0 +1,46 @@
+<html>
+    
+    <style>
+        ol {
+            color:blue;
+        }
+        .first{
+            font-size: x-large;
+            color:gray;
+        }
+        #foods{
+            color:aquamarine;
+        }
+        .last{
+            font-size:medium;
+            color:rgb(147, 255, 47);
+
+        }
+    </style>
+    <script>
+        function sayHello(){
+            alert('hello');
+        }
+        function sayBye(item){
+            console.log(item);
+            item.innerHTML = '삼겹살';
+            item.style.color = 'black';
+            item.style.fontSize = '40px';
+        }
+    </script>
+    <body>
+        <ol id = 'foods'>
+            <li class = 'first' onclick='sayHello()'>피자</li>
+            <li>치킨</li>
+            <li>햄버거</li>
+            <li class = 'last' onclick='sayBye(this)'>족발</li>
+        </ol>
+        <ol>
+            <li class = 'first'>Benz</li>
+            <li>Bmw</li>
+            <li>Audi</li>
+            <li>Volvo</li>
+            <li class = 'last'>Kia</li>
+        </ol>
+    </body>
+</html>
