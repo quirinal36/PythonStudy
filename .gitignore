@@ -1,0 +1,6 @@
+*.json
+*.csv
+*.xls
+*.xlsx
+*.exe
+*.pyc

@@ -9,9 +9,10 @@ with open('naver_secret.json', 'r') as api_key:
 
 url = 'https://openapi.naver.com/v1/search/image.json'
 
-encText = '?query={}'.format(urllib.parse.quote(query))
+encText = '?query={}&display={}&start={}'.format(urllib.parse.quote(query), 20, 3)
 
 url = url + encText
+print(url)
 
 request = urllib.request.Request(url)
 request.add_header('X-Naver-Client-Id', client_info.get('client_id'))

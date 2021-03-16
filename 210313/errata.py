@@ -12,6 +12,7 @@ url = 'https://openapi.naver.com/v1/search/errata.json'
 encText = '?query={}'.format(urllib.parse.quote(query))
 
 url = url + encText
+print(url)
 
 request = urllib.request.Request(url)
 request.add_header('X-Naver-Client-Id', client_info.get('client_id'))
